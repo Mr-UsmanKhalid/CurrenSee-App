@@ -5,7 +5,8 @@ if [ ! -d "flutter" ]; then
   git clone https://github.com/flutter/flutter.git -b stable --depth 1
 fi
 export PATH="$PATH:$(pwd)/flutter/bin"
+git config --global --add safe.directory "$(pwd)/flutter" || true
 
 flutter config --enable-web
 flutter pub get
-flutter build web --release --dart-define=BACKEND_URL=$BACKEND_URL
+flutter build web --release --dart-define=BACKEND_URL=https://currensee-app-backend.vercel.app/api
